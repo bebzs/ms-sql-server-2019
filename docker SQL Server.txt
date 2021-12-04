@@ -1,0 +1,9 @@
+docker pull mcr.microsoft.com/mssql/server:latest
+
+docker stop bebzs-sql
+
+docker rm bebzs-sql
+
+docker run -e ACCEPT_EULA=Y -e MSSQL_SA_PASSWORD='bebzsPa$$w0rd' -e MSSQL_DATA_DIR=/var/opt/mssql/data -e MSSQL_PID='Express' -e MSSQL_TCP_PORT=1433 -it --network bridge -m 8G -p 1433:1433 -v /mnt/user/Database:/var/opt/mssql/data -v /mnt/user/Database:/var/opt/mssql/log -v /mnt/user/Database:/var/opt/mssql/secrets --name bebzs-sql --hostname bebzs-sql -d mcr.microsoft.com/mssql/server:latest
+
+docker start bebzs-sql

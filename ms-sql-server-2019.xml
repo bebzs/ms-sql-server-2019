@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Containers>
+  <TemplateURL>https://raw.githubusercontent.com/merp4/unraid-docker-templates/master/templates/ms-sql-server-2019.xml</TemplateURL>
+  <Beta>False</Beta>
+  <Category>Database</Category>
+  <Name>Microsoft SQL Server 2019</Name>
+  <Description>
+    An Unraid template for official MS release on DockerHub.[br]
+    See here for details: https://hub.docker.com/_/microsoft-mssql-server
+  </Description>
+  <Overview>
+    An Unraid template for official MS release on DockerHub.[br]
+    See here for details: https://hub.docker.com/_/microsoft-mssql-server
+  </Overview>
+  <Support></Support>
+  <Registry>https://registry.hub.docker.com/_/microsoft-mssql-server</Registry>
+  <GitHub></GitHub>
+  <Repository>mcr.microsoft.com/mssql/server:2019-latest</Repository>
+  <Project></Project>
+  <BindTime>true</BindTime>
+  <Privileged>false</Privileged>
+  <Networking>
+    <Mode>bridge</Mode>
+    <Publish>
+    </Publish>
+  </Networking>
+  <Environment>
+    <Variable>
+      <Name>UMASK</Name>
+      <Value>000</Value>
+    </Variable>
+    <Variable>
+      <Name>PUID</Name>
+      <Value>99</Value>
+    </Variable>
+    <Variable>
+      <Name>PGID</Name>
+      <Value>100</Value>
+    </Variable>
+  </Environment>
+  <Data>
+  </Data>
+  <WebUI></WebUI>
+  <Icon>https://upload.wikimedia.org/wikipedia/commons/thumb/4/44/Microsoft_logo.svg/1200px-Microsoft_logo.svg.png</Icon>
+  <ExtraParams></ExtraParams>
+
+  <Config
+      Type="Port"
+      Name="Discovery Port"
+      Target="1434"
+      Default="1434"
+      Description=""
+      Mask="false"
+      Display="always"
+      Required="false"></Config>
+  <Config
+      Type="Port"
+      Name="SQL Port"
+      Target="1433"
+      Default="1433"
+      Description=""
+      Mask="false"
+      Display="always"
+      Required="true">1433</Config>
+  <Config
+      Type="Variable"
+      Name="Accept EULA"
+      Target="ACCEPT_EULA"
+      Default="Y"
+      Description="Set to 'Y' to confirm your acceptance of the End-User Licensing Agreement. See 'License' section here https://hub.docker.com/_/microsoft-mssql-server for details."
+      Mask="false"
+      Display="always"
+      Required="true"></Config>
+  <Config
+      Type="Variable"
+      Name="SA Password"
+      Target="MSSQL_SA_PASSWORD"
+      Default=""
+      Description="Set a password for the sysadmin account, must meet password strength rules to work: This password needs to include at least 8 characters of at least three of these four categories: uppercase letters, lowercase letters, numbers and non-alphanumeric symbols. See 'Environment Variables' section here https://hub.docker.com/_/microsoft-mssql-server for details."
+      Mask="true"
+      Display="always"
+      Required="true"></Config>
+  <Config
+      Type="Variable"
+      Name="Product Version ID"
+      Target="MSSQL_PID"
+      Default="Developer"
+      Description="'the Product ID (PID) or Edition that the container will run with' - allowed values: Developer/Express/Standard/Enterprise/EnterpriseCore. See 'Environment Variables' section here https://hub.docker.com/_/microsoft-mssql-server for details."
+      Mask="false"
+      Display="always"
+      Required="true">Developer</Config>
+  <Config
+      Type="Variable"
+      Name="Enable SQL Server Agent"
+      Target="MSSQL_AGENT_ENABLED"
+      Default="false"
+      Description="Set to true/false to enable/disable SQL Server Agent."
+      Mask="false"
+      Display="always"
+      Required="false"></Config>
+  <Config
+      Type="Variable"
+      Name="Language ID (LCID)"
+      Target="MSSQL_LCID"
+      Default="1033"
+      Description="Sets the language ID to use for SQL Server. For example 1036 is French. See https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15&amp;viewFallbackFrom=sql-server-2019."
+      Mask="false"
+      Display="always"
+      Required="false"></Config>
+  <Config
+      Type="Variable"
+      Name="Default Collation"
+      Target="MSSQL_COLLATION"
+      Default=""
+      Description="Sets the default collation for SQL Server. This overrides the default mapping of language id (LCID) to collation. See https://docs.microsoft.com/en-us/sql/linux/sql-server-linux-configure-environment-variables?view=sql-server-ver15&amp;viewFallbackFrom=sql-server-2019."
+      Mask="false"
+      Display="always"
+      Required="false"></Config>
+  
+  <Config
+      Type="Path"
+      Mode="rw"
+      Name="Data Path"
+      Target="/var/opt/mssql/data"
+      Default=""
+      Description=""
+      Mask="false"
+      Display="always"
+      Required="true"></Config>
+  <Config
+      Type="Path"
+      Mode="rw"
+      Name="Log Path"
+      Target="/var/opt/mssql/log"
+      Default=""
+      Description=""
+      Mask="false"
+      Display="always"
+      Required="true"></Config>
+  <Config
+      Type="Path"
+      Mode="rw"
+      Name="Secrets Path"
+      Target="/var/opt/mssql/secrets"
+      Default=""
+      Description=""
+      Mask="false"
+      Display="always"
+      Required="true"></Config>
+</Containers>

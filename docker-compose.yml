@@ -1,0 +1,18 @@
+version: '3.9'
+services:
+  bebzs-sql:
+    image: mcr.microsoft.com/mssql/server:latest
+    environment:
+      ACCEPT_EULA: "Y"
+      MSSQL_SA_PASSWORD: "bebzsPa$$w0rd"
+      MSSQL_PID: Express
+      MSSQL_TCP_PORT: 1433
+      MSSQL_DATA_DIR: /var/opt/mssql/data
+    ports: 
+      - "1433:1433"
+    network_mode: bridge
+    container_name: bebzs-sql
+    volumes:
+      - "/mnt/user/Database:/var/opt/mssql/data"
+      - "/mnt/user/Database:/var/opt/mssql/log"
+      - "/mnt/user/Database:/var/opt/mssql/secrets"
