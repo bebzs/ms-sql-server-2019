@@ -13,7 +13,7 @@
     See here for details: https://hub.docker.com/_/microsoft-mssql-server
   </Overview>
   <Support></Support>
-  <Registry>https://registry.hub.docker.com/_/microsoft-mssql-server</Registry>
+  <Registry></Registry>
   <GitHub></GitHub>
   <Repository>mcr.microsoft.com/mssql/server:2019-latest</Repository>
   <Project></Project>
